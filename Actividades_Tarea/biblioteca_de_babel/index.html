@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca de babel</title>
+</head>
+<body>
+    <form action="./dynamics/libro.php" method="post">
+        <fieldset>
+            <legend><h4>Ingresa tu búsqeda</h4></legend>
+            <label for="search">Buscar: </label>
+            <input type="text" name="search" id="search">
+            <br><br>
+            <label for="timezone">Zona horaria de tu preferencia</label>
+            <select name="timezone" id="timezone" required>
+                <option value="America/Mexico_City">Ciudad de México</option>
+                <option value="Europe/Berlin">Alemanio Berlín</option>
+                <option value="Indian/Maldives">India maldivas</option>
+                <option value="Antarctica/Rothera">Antártida Rothera</option>
+            </select>
+            <br><br>
+            <label for="modo">Modo: </label>
+            <select name="modo" id="modo" required>
+                <option value="normal">Nomral</option>
+                <option value="orden">Orden</option>
+                <option value="palabras">Palabras</option>
+            </select>
+            <br><br>
+            <button type="submit">Buscar</button>
+            <button type="reset">Borrar</button>
+        </fieldset>
+    </form>
+    <h4>Para consultar zonas horarias de php ir <a href="https://www.php.net/manual/es/timezones.php" target="_blank">Time zones php</a></h4>
+    <br><br>
+    
+</body>
+</html>

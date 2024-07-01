@@ -1,0 +1,45 @@
+<!-- Please run xampp and apache for operating the form with php -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./statics/flag.png" type="image/x-icon">
+    <title>Seven Flags</title>
+</head>
+<body>
+    <form action="./dynamics/boletos_generados.php" method="post">
+        <fieldset>
+            <legend><h3>Sign in</h3></legend>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" required>
+            <br><br>
+            <label for="lastN">Last names:</label>
+            <input type="text" name="lastN" id="lastN" required>
+            <br><br>
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age" required>
+            <br><br>
+            <label for="address">Address:</label>
+            <input type="text" name="address" id="address" required>
+            <br><br>
+            <label for="numTickets">Number of tickets:</label>
+            <!-- Para restringuir ciertos valores desde el formulario: -->
+            <!-- <input type="number" name="numTickets" id="numTickets"  min="1" max="15" step="1"> -->
+            <input type="number" name="numTickets" id="numTickets">
+            <br><br>
+            <label for="ticketType">Ticket type:</label>
+            <select name="ticketType" id="ticketType" required>
+                <option value="FLASH_PASS">Flash pass</option>
+                <option value="CLASSIC">Classic</option>
+                <option value="CLASSY">Classy</option>
+                <option value="ADVENTURE">Adventure</option>
+                <option value="FREE_FOOD">Free food</option>
+            </select>
+            <br><br>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </fieldset>
+    </form>
+</body>
+</html>
