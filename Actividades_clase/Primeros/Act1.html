@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="./statics/cloud.png" type="image/icon">
+        <title>CW2</title>
+    </head>
+    <body>
+        <h1>Curso web</h1>
+        <p> 
+            Hola muy buenas en esta página voy a escribir el repaso del curso web 2022. Empezamos con las etiquetas de título
+            como podemos ver a continuación
+        </p>
+        <h1> Hay títulos desde h1 hasta h6</h1>
+        <h2> Soy una etiqueta h2</h2>
+        <h3> Soy una etiqueta h3</h3>
+        <h4> Soy una etiqueta h4</h4>
+        <h5> Soy una etiqueta h5</h5>
+        <h6> Soy una etiqueta h6</h6>
+        <!-- Comentariooooo -->
+        <p>Esta es una etiqueta de párrafo</p>
+        <p>Si se ponen juntas, como esta otra, hay entre ellas un salto de línea,  además podemos resaltar el texto con la etiqueta <strong>Strong</strong> o <u>subrayar texto</u> con la etiqueta <u>u</u>, también se puede poner en <i>cursiva</i> con la etiqueta <i>i</i>. Además me parece muy interesante que podemos poner Superíndices<sup>Superíndices</sup> y subíndices<sub>Subíndices</sub> con esto puedo escribir exponentes y subíndices en expresiones matemáticas como: f<sub>1</sub>(x) = x<sup>2</sup> + 3x + 1</p>
+        <hr>
+        <p>
+            Tenemos otro tipo de etiquetas que no necesitan de una etiqueta de cierre<br>
+            Es un elemento HTML que nos sirve para representar datos en dos o más dimensiones<br>
+            en forma de tablas. Por ejemplo estos saltos de línes son gracias a un br. La línea <br>
+            divisora que separa el párrafo anterior y este es una etoqieta hr que como se <br>
+            observa es una línea divisora.
+        </p>
+        <hr>
+        <p>Ahora vamos a incertar una imágen:</p>
+        <img src="./statics/smile.jpg" alt="Simle yooooo" width="250">
+        <hr>
+        Ahora vamos a hacer listas tenemos 3 tipos de listas: Oredenadas, desordenadas y de definiciones:
+        <h3>Podemos indicar el tipo de numeración de la lista ordenada</h3>
+        <ol>
+            <li>
+                Ordenadas
+                <ol>
+                    <li>
+                        Ordenadas por <strong>número romano</strong>
+                        <ol type="I">
+                            <li>Chocolate</li>
+                            <li>Avellana</li>
+                            <li>Zanahoria</li>
+                        </ol>                    
+                    </li>
+                    <li>
+                        Por <strong>Romanos minúscula</strong>
+                        <ol type="i">
+                            <li>Chocolate</li>
+                            <li>Avellana</li>
+                            <li>Zanahoria</li>
+                        </ol>
+                    </li>
+                    <li>
+                        Por <strong>Letras mayúsculas</strong>
+                        <ol type="A">
+                            <li>Chocolate</li>
+                            <li>Avellana</li>
+                            <li>Zanahoria</li>
+                        </ol>
+                    </li>
+                    <li>
+                        Y por <strong>Letras minúsculas</strong>
+                        <ol type="a">
+                            <li>Chocolate</li>
+                            <li>Avellana</li>
+                            <li>Zanahoria</li>
+                        </ol>
+                    </li>
+                </ol>
+            </li>
+            <li>
+                Desordenadas
+                <ul type="disc">
+                    <li>
+                        Disco
+                        <ul type="disc">
+                            <li>Chanclas</li>
+                            <li>Leche</li>
+                            <li>Blusa azul</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Círculo
+                        <ul type="circle">
+                            <li>Chanclas</li>
+                            <li>Leche</li>
+                            <li>Blusa azul</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Cuadrado
+                        <ul type="square">
+                            <li>Chanclas</li>
+                            <li>Leche</li>
+                            <li>Blusa azul</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                De definiciones
+                <dl>
+                    <dt>Gimnasia</dt>
+                        <dd>Trampolín</dd>
+                        <dd>Tumbling</dd>
+                        <dd>Artística</dd>
+                    <dt>Verduras</dt>
+                        <dd>Champiñón</dd>
+                        <dd>Brócoli</dd>
+                        <dd>Zanahiria</dd>
+                    <dt>Compras</dt>
+                        <dd>1 kg plátano</dd>
+                        <dd>Magnesia</dd>
+                        <dd>Carne molida</dd>
+                </dl>
+            </li>
+        </ol>
+        <hr>
+        Si quieres ingresar a la página del curso web da click en: <br>
+        <a href=" https://www.prepa6.unam.mx/aulas/course/view.php?id=16">Página del curso web</a>
+        <hr>
+        <h3>Ahora vamos a colocar una tabla que forme un horario de lunes a domingo</h3>
+        <table cellpadding="5px" border=1 align="center" style="border-collapse: collapse;">
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                    <th>Sábado</th>
+                    <th>Domingo</th>
+                </tr>                    
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7:00 - 8:00</td>
+                    <td>1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>8:00 - 9:00</td>
+                    <td></td>
+                    <td>2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>6</td>
+                    <td></td>
+                    <td></td>
+                    <td>9</td>
+                </tr>
+                <tr>
+                    <td>10:00 - 11:00</td>
+                    <td></td>
+                    <td></td>
+                    <td>3</td>
+                    <td></td>
+                    <td>5</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>11:00 - 12:00</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <iframe width="613" height="301" src="https://www.youtube.com/embed/sPckCSReJDo?list=PLZBQ57XktN0PbXHfNlXyXzxAg_Tg97PW5" title="Sesión 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <hr>
+        <p>Ahora vamos a hacer una actividad usando las etiquetas de incersión de imágenes, audio y video de youtube</p>
+        <table cellpadding="5px" border=1 align="center">
+            <thead>
+                <tr>
+                    <td>Película</td>
+                    <td>Foto</td>
+                    <td>Video de YouTube</td>
+                    <td>Audio</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Titanic</td>
+                    <td><img src="./statics/titan.jpeg" alt="Titanic" width="150"></td>
+                    <td><iframe width="360" height="115" src="https://www.youtube.com/embed/cyNzlsjX-3o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+                    <td><audio src="./statics/FlashSound.mp3" contenteditable="true" controls></audio></td>
+                </tr>
+                <tr>
+                    <td>Gabby Douglas Story</td>
+                    <td><img src="./statics/gabby-douglas.jpg" alt="Gabby Douglas Story Img" width="150"></td>
+                    <td><iframe width="360" height="115" src="https://www.youtube.com/embed/wgmM4pDQus8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+                    <td><audio src="./statics/VictoriousSound.mp3" controls></audio></td>
+                </tr>
+                <tr>
+                    <td>Spider-man</td>
+                    <td><img src="./statics/spiderman.jpeg" alt="Spider man" width="150"></td>
+                    <td><iframe width="360" height="115" src="https://www.youtube.com/embed/eou9olJruK4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></td>
+                    <td><audio src="./statics/FlashSound.mp3" controls></audio></td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <p>
+            <audio src="" controls>
+                <source src="" type="audio/ogg">
+            </audio>
+        </p>
+        <hr>
+        <form action="./dynamics/act.php" method="post" target="_blank">
+            <fieldset>
+                <legend>Tipos de input</legend>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="firstData">
+                <br><br>
+                <label for="checkbox">Check</label>
+                <input type="checkbox" name="checkbox" id="checkbox">
+                <br><br>
+                <label for="email">Correo electrónico: </label>
+                <input type="email" id="email" placeholder="E-MAIL">
+                <br><br>
+                <label for="color">Color</label>
+                <input type="color" name="color" id="color">
+                <br><br>
+                <label for="numero">Numero</label>
+                <input type="number" name="numero" id="numero">
+                <br><br>
+                <label for="opt">Tipo</label>
+                <select name="opt" id="">
+                    <option value="">Uno</option>
+                    <option value="">Dos</option>
+                    <option value="">Tres</option>
+                </select>
+                <br><br>
+                <label for="psw">Contraseña</label>
+                <input type="password" name="psw" id="psw">
+                <br><br>
+                <label for="arch">Archivo</label>
+                <input type="file" name="arch" id="arch">
+                <br><br>
+                <label for="hid">Hidden</label>
+                <input type="hidden" name="hid">
+                <br><br>
+                <label for="date">Fecha</label>
+                <input type="date" name="date" id="date">
+                <br><br>
+                <label for="mes">Mes</label>
+                <input type="month" name="mes" id="mes">
+                <br><br>
+                <label for="rango">Rango</label>
+                <input type="range" name="rango" id="rango">
+                <br><br>
+                <label for="temp">Tiempo</label>
+                <input type="time" name="temp" id="temp">
+                <br><br>
+                <label for="buscar">Buscar</label>
+                <input type="search" name="buscar" id="buscar">
+                <br><br>
+                <label for="writing">Escribe algo</label> <br>
+                <textarea name="writing" id="" cols="30" rows="10"></textarea>
+                <br><br>
+                <label for="choose">Escoger</label>
+                <input list="lista">
+                <datalist id="lista">
+                    <option value="Cadena 1"></option>
+                    <option value="Cadena 2"></option>
+                    <option value="Cadena 3"></option>
+                </datalist>
+                <br><br>
+                <button type="submit">Enviar</button>
+                <button type="reset">Borrar datos</button>
+            </fieldset>
+        </form>
+        <h3>Mapeo de imágenes</h3>
+        <p>Es una imagen que al dar click te redirecciona a un sitio</p>
+        <img usemap="#mapa" src="./statics/lake.jpeg" alt="Lago y montañas">
+        <map name="mapa">
+            <area target="_blank" alt="mapa" title="Página para generar html de imágenes" href="https://www.image-map.net/" coords="4,96,49,89,104,88,172,98,234,118,273,148,271,180,4,180" shape="poly">
+            <area target="_blank" alt="mapa" title="Amo a Jesús el Mesías" href="./statics/ILoveJesus.jpeg" coords="274,29,274,131,245,119,185,97,109,85,197,63,222,53,241,45" shape="poly">
+        </map>
+    </body>
+</html>
