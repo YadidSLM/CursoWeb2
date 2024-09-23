@@ -1,0 +1,62 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+div{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 30px;
+}
+header{
+    background-color: rgb(240, 121, 24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+nav{
+    background-color: rgb(228, 205, 4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+.contenedor{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+}
+section{
+    background-color: rgb(129, 197, 51);
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+article{
+    background-color: rgb(110, 9, 204);
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    margin: 10%;
+    border-radius: 15px;
+}
+article:hover{
+    box-shadow: -1px 2px 11px 1px rgba(0,0,0,0.86);
+    -webkit-box-shadow: -1px 2px 11px 1px rgba(0,0,0,0.86);
+    -moz-box-shadow: -1px 2px 11px 1px rgba(0,0,0,0.86);
+}
+aside{
+    background-color: rgb(172, 9, 9);
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    position: static;
+}
+footer{
+    background-color: rgb(4, 112, 212);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
