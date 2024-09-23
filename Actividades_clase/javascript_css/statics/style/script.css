@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "parrafos";
+    src: url(../fonts/Poppins-Regular.ttf);
+}
+body{
+    background-color:cornsilk;
+    /* position: relative; */
+}
+h1{
+    font-family: 'parrafos', 'Lucida Handwrinting', cursive;
+    /* position: absolute; */
+    text-align: center;
+    cursor:help;
+}
