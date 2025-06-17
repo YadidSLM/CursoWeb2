@@ -25,20 +25,26 @@ function numAleatorio(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function randoMove(){
+    let x = numAleatorio(1, window.innerWidth - 200);
+    let y = numAleatorio(1, window.innerHeight - 200);
+    botonNo.style.left = x + "px";
+    botonNo.style.top = y + "px";
+}
+
 botonSi.addEventListener("click", ()=>{
     alert("Son buenos");
+    botonNo.removeEventListener("mouseover", randoMove); //Con esto ya no se mueve el boton no una vez que se da este evento.
 });
 
 botonNo.addEventListener("click", ()=>{
     alert("Muchos pellejitos, ¿no?")
 });
 
-botonNo.addEventListener("mouseover", ()=>{
-    let x = numAleatorio(1, window.innerWidth - 200);
-    let y = numAleatorio(1, window.innerHeight - 200);
-    botonNo.style.left = x + "px";
-    botonNo.style.top = y + "px";
+botonNo.addEventListener("mouseover", randoMove);
 
+botonNo.addEventListener("mouseover", (evento) => {
+    console.log(evento);
 });
 
 // console.log(numAleatorio(1,6));
