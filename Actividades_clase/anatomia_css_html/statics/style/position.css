@@ -1,0 +1,82 @@
+/* Es importante que se especifique la posición para que los elementos dentro del body se posiciones con respecto
+al body, se especifica la altura 100% para que abarque toda la ventana. */
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    background-color: blanchedalmond;
+}
+
+nav{
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    background-color:chocolate;
+}
+.boton{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: black;
+    text-decoration: none;
+    font-size: 1.5em;
+    background-color: aliceblue;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+}
+#inicio{
+    position: relative;
+    left: 90%;
+    top: 20%;
+}
+
+
+/* Posición relative hace que siga en su posición de flujo normal como si fuera static que según en el 
+curso web esa posición depende del ancestro más lejano que tenga, pero se puede mover con respecto a esa
+posición; además si hay elementos que le siguen como es en este caso two, independientemente de cuánto lo 
+hayamos movido, los demás elementos respetan su espeacio original, es decir, no se ajustan al movimiento del
+elemento sino a su posición original (static)*/
+#one{
+    position: absolute;
+    box-sizing: content-box; /*Indica que el width y height se refieren a únicamente el contenido sin considerar el padding, margen y borde*/
+    z-index: 1;
+    top: 20%;
+    left: 20%;
+    /* Contenido */
+    display: flex;
+    align-items: center; /*Alínea verticalmente*/
+    justify-content: center; /*Alínea horizontalmente*/
+    /* Forma y color de letra */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: antiquewhite;
+    border-radius: 10px;
+    /* Color de fondo */
+    background-color: brown;
+    /* Forma */
+    width: 20%;
+    height: 60%;
+}
+/* Posición absolute ya no respeta la posición de flujo normal, ahora su posición es
+ con respecto a su elemento padre (elemeto que lo contiene).
+ Como en este ejemplo el padre es el body tanto one que es relative como two que es absolute se mueven con 
+ respecto al body, el relative porque es el flujo normal y absolute porque es el elemnto padre. */
+#two{
+    position: absolute;
+    box-sizing: content-box; /*Indica que el width y height se refieren a todo el elemento tanto el contenido como el padding, margen y borde y no se sale del padre*/
+    top: 20%;
+    left: 60%;
+    z-index: 2;
+    /* Forma y color de letra */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: antiquewhite;
+    border-radius: 10px;
+    /* Contenido */
+    display: flex;
+    align-items: center; /*Alínea verticalmente*/
+    justify-content: center; /*Alínea horizontalmente*/
+
+    /* Color de fondo */
+    background-color: rgb(0, 71, 129);
+    /* Forma */
+    width: 20%;
+    height: 60%;
+}
