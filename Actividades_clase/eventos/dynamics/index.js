@@ -1,5 +1,6 @@
 const botonSi = document.getElementById("si");
 const botonNo = document.getElementById("no");
+const inputTexto = document.getElementById("texto");
 /*
 // Crear elementos html
 let body = document.getElementsByTagName("body");
@@ -50,3 +51,11 @@ botonNo.addEventListener("mouseover", (evento) => {
 // console.log(numAleatorio(1,6));
 console.log("Pantalla completa:", screen.width + "x" + screen.height);
 console.log("Viewport visible:", window.innerWidth + "x" + window.innerHeight);
+
+inputTexto.addEventListener("keydown", (evento) => {
+    //Si no es un número no permitas el evento
+    if(isNaN(parseInt(evento.key)) && evento.key.length === 1){
+        console.log("No es un número, " + evento.key);
+        evento.preventDefault();
+    }
+});
