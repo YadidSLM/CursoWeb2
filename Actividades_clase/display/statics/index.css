@@ -1,0 +1,28 @@
+#inline{
+    background-color: brown;
+    display: inline;
+}
+
+#block{
+    /* Los elementos de bloque sí pueden tener un alto y un ancho. */
+    background-color: rgb(80, 80, 223);
+    display: block;
+}
+
+#none{
+    background-color: yellow;
+    display: none;
+}
+
+#inline-block{
+    /* Los elementos de línea no permiten tener alto ni ancho, pero
+    con este display puede ser de línea con un alto y un ancho. */
+    background-color: yellowgreen;
+    display: inline-block;
+    width: 40px;
+    height: 60px;
+}
+
+span{
+    background-color: violet;
+}
