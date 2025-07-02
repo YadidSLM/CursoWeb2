@@ -1,0 +1,56 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    background-color: rgb(194, 30, 30);
+}
+
+#title{
+    height: 35vh;
+    background-image: url("../imgs/pok_logo.png");
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+#buscador{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 5vh;
+}
+
+#input{
+    height: 10vh;
+    width: 50vw;
+    border-radius: 30px;
+}
+
+#input::placeholder{
+    text-align: center;
+}
+
+#agregar{
+    margin-left: 10px;
+    width: 5vw;
+    border-radius: 60px;
+    background-color: rgb(83, 206, 58);
+}
+
+#agregar:hover{
+    border-width: 5px;
+    font-size: larger;
+}
+
+#form{
+    margin: 1%;
+    padding: 2%;
+    background-color: aliceblue;
+    border-radius: 30px;
+    display: none;
+    position: relative;
+    width: 40vw;
+    top: 5vh;
+}
