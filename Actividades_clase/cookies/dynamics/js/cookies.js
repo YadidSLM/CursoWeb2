@@ -20,3 +20,7 @@ console.log(fecha.toGMTString());
 
 document.cookie = "cookieUno = Cambiando el valor; expires =" + fecha.toGMTString();
 //Se puede colocar lo que dura la cookie con max-age o expires, es igual.
+
+//Si se crea una cookie y quieres acceder a ella en php recarga la página con
+document.cookie = "usuario=Sebas; path=/";
+window.location.href = "../php/cookies.php"; // PHP ya podrá ver la cookie
