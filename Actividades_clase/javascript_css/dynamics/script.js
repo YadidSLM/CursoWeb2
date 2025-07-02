@@ -19,7 +19,7 @@ let v = 3;
 console.log(parseInt('1111',2));
 console.log(dayan3X3);
 //'tipo' es un atributo de la instancia dayan3x3
-console.log('marc' in dayan3X3);
+console.log('marca' in dayan3X3);
 
 let principal = new Array("Hey", 1, 3, "Sol");
 let slice = principal.slice(1,5);
@@ -31,6 +31,7 @@ function saludo (func){
     console.log("Bienvenido: " + func());
 }
 //Lo que hace la función se define en la llamada a la función
-saludo(()=>{
+saludo(()=>{ //La función (predeclarada) recibe este parámetro que es una fucnión
+    console.log("Aparte de regresar una cadena ejecuta instrucciones");
     return "Tucán libre";
 });
