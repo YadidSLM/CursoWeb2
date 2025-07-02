@@ -1,0 +1,122 @@
+@font-face {
+    font-family: "Titles";
+    src: url("../fonts/LuckiestGuy-Regular.ttf");
+}
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    position: relative;
+    background-image: url("../imgs/jungle.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.titulo{
+    /* Font */
+    font-family: "Titles", "Courier New", monospace;
+    /* Clamp limita el tamaño, 1rem evita que sea demasiado pequeño (valor mínimo), 5vw es el proporcional, 8rem es el máximo, evita que sea demasiado grande en pantallas grandes */
+    font-size: clamp(1rem, 8vw, 8rem);
+    text-shadow: 5px 5px 2px black;
+    color: gold;
+    /* Elemeto: posición, margen ypadding*/
+    margin: 0;
+    padding: 0;
+    display: inline;
+    position: absolute;
+    left: 20vw;
+    top: 10vh;
+}
+
+h2{
+    /* Font */
+    font-family: "Titles", "Courier New", monospace;
+    font-size: clamp(1rem, 3vw, 4rem) !important;
+    text-shadow: 5px 5px 2px black;
+    color: gold;
+    /* margen y padding*/
+    margin: 0;
+    padding: 0;
+}
+
+#titulo_partida{
+/* Cuando tiene la clase titulo le hace caso a estas dimensiones*/
+    left: 40vw !important;
+    top: 5vh !important;
+}
+
+#nivel{
+    position: relative;
+    top: 16vh;
+    left: 3vw;
+}
+
+.boton, a{
+    border-radius: 20px;
+    border-style: hidden;
+    background-color:#F5E733; /*#F5E733*/
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #24440E; /*#24440E*/
+    /* color: #3c850c; */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#facil, #medio, #dificil{
+    padding: 4%;
+    margin: 1vw;
+    width: 20vw;
+    height: 15vh;
+    font-size: clamp(1cqb, 5cqb, 2rem);
+}
+
+a{
+    padding: 1vw;
+    margin: 1vw;
+    font-size: clamp(1cqb, 3cqb, 2rem);
+    position: relative;
+    
+}
+
+.menu {
+  position: absolute;    /* Para ubicarlo en una esquina */
+  top: 30vh;
+  left: 1vw;
+  display: flex;
+  flex-direction: column; /* Apila verticalmente */
+  gap: 2vh;               /* Espacio entre botones */
+}
+
+form{
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 35vh;
+    left: 38vw;
+}
+
+#contenedorTablero{
+    position: relative;
+    left: 34vw;
+    top: 13vh;
+    display: grid;
+    gap: 2px; /* espacio entre casillas */
+    width: 450px;
+    height: 450px;
+}
+
+.casilla {
+  background-color: lightgray;
+  border: 1px solid #999;
+}
+
+
+.boton:hover, a:hover{
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5);
+    color: #346215;
+}
