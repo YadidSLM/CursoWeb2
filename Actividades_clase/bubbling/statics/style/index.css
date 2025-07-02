@@ -1,0 +1,29 @@
+
+#padre{
+    background-color: rgb(10, 185, 10);
+    width: 200px;
+    height: 200px;
+}
+#hijo{
+    background-color: rgb(236, 38, 38);
+    width: 100px;
+    height: 100px;
+}
+
+#tarjeta{
+    background-color: rgb(105, 105, 105);
+    position: relative;
+    width: 35vw;
+    padding: 2vh;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+
+}
+#sub{
+    background-color: red;
+    padding: 1vh;
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: aliceblue;
+}
