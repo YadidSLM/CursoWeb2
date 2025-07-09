@@ -15,11 +15,33 @@ html, body{
 
 }
 
-#buscador{
+.buscador{
     display: flex;
     justify-content: center;
     position: relative;
     top: 5vh;
+}
+
+#opciones{
+    display: block;
+}
+
+.option{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: white;
+    margin: 1px;
+    position: relative;
+    width: 50vw;
+    height: 5vh;
+    top: 5vh;
+    left: 22vw;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}
+.option:hover{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
 
 #input{
@@ -34,7 +56,7 @@ html, body{
 
 #agregar{
     margin-left: 10px;
-    width: 5vw;
+    width: 5vmax;
     border-radius: 60px;
     background-color: rgb(83, 206, 58);
 }
@@ -53,4 +75,28 @@ html, body{
     position: relative;
     width: 40vw;
     top: 5vh;
+}
+#despliegue-pokemon{
+    position: relative;
+    top: 8vh;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
+.info{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: white;
+    border-radius: 6px;
+    min-width: 100px;
+    min-height: 100px;
+    width: 10vw;
+    height: 10vw;
+    padding: 1em;
+    margin: 5px 10px;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+
 }

@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="./statics/style/index.css">
+    <link rel="shortcut icon" href="./statics/imgs/pokeball.png" type="image/x-icon">
 </head>
 <body>
     <div id="title"></div>
-    <div id="buscador">
-        <input type="text" name="pokemon" placeholder="Pokemón" id="input">
+    <div class="buscador">
+        <input type="text" name="pokemon" placeholder="Pokemón" class="input" id="input">
         <button type="button" id="agregar">+</button>
     </div>
+    <div class="" id="opciones"></div>
     <div id="form">
         <h2>Agregar pokemón</h2>
         <label for="nombre">Nombre: </label>
@@ -22,11 +24,12 @@
         <input type="number" name="peso" id="peso" min="1"><br><br>
         <label for="experiencia">Experiencia base: </label>
         <input type="number" name="experiencia" id="experiencia" min="1"><br><br>
-        <label for="tipo">Tipo</label>
+        <label for="select-tipos">Tipo</label> <!-- El navegador me corrigió que el for debe estar ligado al id del elemento al que se refiere, no a su name. -->
         <select name="tipo" id="select-tipos"></select><br><br>
         
         <button type="submit" id="enviar">Agregar</button>
     </div>
+    <div id="despliegue-pokemon"></div>
     <script src="./dynamics/js/index.js"></script> <!-- Mejor ponerlo aquí para que termine de cargar el html y luego obtenga los elementos en el JavaScript -->
 </body>
 </html>
