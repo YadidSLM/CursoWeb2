@@ -13,6 +13,7 @@ function drawStar(lineColor, puntiagudez, numPicos, rellenar){
     let rad;
     let xDestino = [undefined, undefined];
     let yDestino = [undefined, undefined];
+    const picoEn = 360/numPicos;
     document.body.parentElement.style.backgroundColor = lineColor;
     document.body.style.backgroundColor = lineColor;
     ctx.beginPath();
@@ -22,12 +23,12 @@ function drawStar(lineColor, puntiagudez, numPicos, rellenar){
         rad = (theta) * (Math.PI/180);
         xDestino[0] = longitud[0] * Math.cos(rad) + x1;
         yDestino[0] = longitud[0] * Math.sin(rad) + y1;
-        mitadRadEntrePicos = (Math.ceil(360/numPicos) / 2) * (Math.PI/180); //Ángulo en radianes de la mitad de ángulo que hay entre cada pico.
+        mitadRadEntrePicos = (picoEn / 2) * (Math.PI/180); //Ángulo en radianes de la mitad de ángulo que hay entre cada pico.
         xDestino[1] = longitud[1] * Math.cos(rad + mitadRadEntrePicos) + x1;
         yDestino[1] = longitud[1] * Math.sin(rad + mitadRadEntrePicos) + y1;
 
         for(let pic = 0; pic < numPicos; pic++){
-            if(theta == (Math.ceil(360/numPicos)) * pic){
+            if(theta == Math.round(picoEn * pic)){
                 ctx.lineTo(xDestino[0], yDestino[0]);
                 ctx.lineTo(xDestino[1], yDestino[1]);
             }
