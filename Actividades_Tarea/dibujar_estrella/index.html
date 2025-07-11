@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrella</title>
+    <link rel="stylesheet" href="./statics/index.css">
+    <link rel="shortcut icon" href="./statics/imgs/star.png" type="image/x-icon">
+</head>
+<body>
+    <div id="generador">
+        <h1>Generador de estrella</h1>
+        <canvas id="estrella" width="300" height="300"></canvas>
+        <hr>
+        <div id="inputs">
+            <label for="num_picos">Número de picos</label>
+            <input type="number" name="num_picos" id="num_picos" max="30" min="3" value="3"> <br>
+            <label for="puntiagudez">Puntiagudez</label>
+            <input type="range" name="puntiagudez" id="puntiagudez"> <br>
+            <label for="star_color">Color </label>
+            <input type="color" name="star_color" id="star_color" value="#007ebd"> <br>
+            <label for="rellenar">Rellenar estrella</label>
+            <input type="checkbox" name="rellenar" id="rellenar"> <br>
+        </div>
+    </div>
+    <script src="./dynamics/dibuja.js"></script>
+</body>
+</html>
