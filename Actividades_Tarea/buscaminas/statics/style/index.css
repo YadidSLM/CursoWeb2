@@ -103,7 +103,7 @@ form{
 #contenedorTablero{
     position: relative;
     left: 34vw;
-    top: 13vh;
+    top: 20vh;
     display: grid;
     gap: 2px; /* espacio entre casillas */
     width: 450px;
@@ -119,4 +119,5 @@ form{
 .boton:hover, a:hover{
     box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5);
     color: #346215;
+    cursor: pointer;
 }
