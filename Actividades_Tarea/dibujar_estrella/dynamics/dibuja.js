@@ -5,6 +5,8 @@ const rellenar = document.getElementById("rellenar");
 const canW = 300;
 const canvas = document.getElementById("estrella");
 const ctx = canvas.getContext("2d");
+const enlace = document.createElement("a"); //Etiqueta a
+const descargar = document.getElementById("descargar");
 
 function drawStar(lineColor, puntiagudez, numPicos, rellenar){
     let x1 = 150;
@@ -42,9 +44,6 @@ function drawStar(lineColor, puntiagudez, numPicos, rellenar){
     if(rellenar){
         ctx.fillStyle = lineColor;
         ctx.fill();
-    } else {
-        ctx.fillStyle = "#ffffff";
-        ctx.fill();
     }
     ctx.strokeStyle = lineColor;
     ctx.stroke();
@@ -76,5 +75,14 @@ star_color.addEventListener("input", ()=>{
 });
 
 rellenar.addEventListener("change", ()=>{
+    ctx.clearRect(0, 0, canW, canW);
     drawStar(star_color.value, puntiagudez.value, num_picos.value, rellenar.checked);
+});
+
+descargar.addEventListener("click", () => {
+    // Obtiene el contenido del canvas como imagen PNG
+    const imagen = canvas.toDataURL("image/png");
+    enlace.href = imagen;
+    enlace.download = "estrella_de_" + num_picos.value + "_picos_" + puntiagudez.value + "_puntiaguda.png"; // Nombre del archivo
+    enlace.click(); // Simula clic para descargar
 });
