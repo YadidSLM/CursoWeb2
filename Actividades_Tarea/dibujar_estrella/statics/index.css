@@ -3,7 +3,6 @@ html, body{
     padding: 0;
     position: relative;
     height: 100%;
-    background-color: rgb(216, 215, 131);
     display: flex;
     justify-self: center;
     align-items: center;
@@ -28,10 +27,15 @@ h1{
     padding: 1%;
 }
 
-label{
+label, button{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-
+button{
+    padding: 5px;
+}
+button:focus{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 3px 6px -1.2px inset, rgba(0, 0, 0, 0.3) 0px 1.8px 3.6px -1.8px inset;
+}
 #inputs{
     display: inline;
     text-align: center;
