@@ -31,7 +31,7 @@ export class Tablero{
             this.numCasillas = 24;
             this.bombas = 99;
             this.tableroPadre.setAttribute("style", "grid-template-columns: repeat(24, 1fr); grid-template-rows: repeat(24, 1fr);")
-        }        
+        }       
     }
     //Métodos
     generarTablero(){
@@ -66,346 +66,40 @@ export class Tablero{
         }
         console.table(this.tablero);
     }
+
     getNearBombs(x,y){
-        //Si donde da click es una casilla que tiene todas las casillas de su alrededor...
-        if(y >= 1 && y <= this.numCasillas - 2 && x >= 1 && x <= this.numCasillas - 2){ //Es para que no entre en el if donde evalúa localidades alrededor en el caso de haber dado click en una esquina o borde  donde no haya casillas a su alrededor.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x == 0 && y == 0){ //Si pica esquina superior izquierda.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x == this.numCasillas - 1 && y == 0){//Si pica esquina inferior izquierda.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x == 0 && y == this.numCasillas - 1){//Si pica esquina superior derecha.
-            if(!this.tablero[x][y].revelado){    
-                if(this.tablero[x][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x == this.numCasillas - 1 && y == this.numCasillas - 1){//Si pica esquina inferior derecha.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x >= 1 && x <= this.numCasillas - 2 & y == 0){//Si pica borde izq.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x == this.numCasillas - 1 && y >= 1 & y <= this.numCasillas - 2){//Si pica borde inferior.
-            if(!this.tablero[x][y].revelado){ //Para que no sume más bombas cercanas cada vez que se detecta el evento, solo se suma cuando las bombas no han sido reveladas.
-                if(this.tablero[x][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }    
-        } else if(x >= 1 && x <= this.numCasillas - 2 & y == this.numCasillas - 1){//Si pica borde der.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x+1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x-1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-            }
-        } else if(x == 0 && y >= 1 & y <= this.numCasillas - 2){//Si pica borde superior.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y+1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
-                }
-                if(this.tablero[x+1][y-1].tile.id == "bomba"){
-                    this.tablero[x][y].nearBombs++;
+        const alrededor = [
+            [x-1, y-1], [x-1, y], [x-1, y+1],
+            [x  , y-1],           [x  , y+1],
+            [x+1, y-1], [x+1, y], [x+1, y+1]
+        ];
+        let contador = 0;
+        for(let [nx, ny] of alrededor){
+            if(!this.tablero[x][y].revelado && nx >= 0 && ny >= 0 && nx < this.numCasillas && ny < this.numCasillas){
+                if(this.tablero[nx][ny].tile.id == "bomba"){
+                    contador++;
                 }
             }
         }
+        this.tablero[x][y].nearBombs = contador;
         console.log("Casilla: (" + x + "," + y + "), Bomb cercanas: " + this.tablero[x][y].nearBombs);
         return this.tablero[x][y].nearBombs;
     }
     getSurroundings(x, y){
-        //Si donde da click es una casilla que tiene todas las casillas de su alrededor...
-        if(y >= 1 && y <= this.numCasillas - 2 && x >= 1 && x <= this.numCasillas - 2){ //Es para que no entre en el if donde evalúa localidades alrededor en el caso de haber dado click en una esquina o borde  donde no haya casillas a su alrededor.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y-1);
-                    this.tablero[x-1][y-1].revelar();
-                }
-                if(this.tablero[x-1][y].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y);
-                    this.tablero[x-1][y].revelar();
-                }
-                if(this.tablero[x-1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y+1);
-                    this.tablero[x-1][y+1].revelar();
-                }
-                if(this.tablero[x][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x,y-1);
-                    this.tablero[x][y-1].revelar();
-                }
-                if(this.tablero[x][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x,y+1);
-                    this.tablero[x][y+1].revelar();
-                }
-                if(this.tablero[x+1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y-1);
-                    this.tablero[x+1][y-1].revelar();
-                }
-                if(this.tablero[x+1][y].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y);
-                    this.tablero[x+1][y].revelar();
-                }
-                if(this.tablero[x+1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y+1);
-                    this.tablero[x+1][y+1].revelar();
-                }
-            }
-        } else if(x == 0 && y == 0){ //Si pica esquina superior izquierda.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x,y+1);
-                    this.tablero[x][y+1].revelar();
-                }
-                if(this.tablero[x+1][y].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y);
-                    this.tablero[x+1][y].revelar();
-                }
-                if(this.tablero[x+1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y+1);
-                    this.tablero[x+1][y+1].revelar();
-                }
-            }
-        } else if(x == this.numCasillas - 1 && y == 0){//Si pica esquina inferior izquierda.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y);
-                    this.tablero[x-1][y].revelar();
-                }
-                if(this.tablero[x-1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y+1);
-                    this.tablero[x-1][y+1].revelar();
-                }
-                if(this.tablero[x][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x,y+1);
-                    this.tablero[x][y+1].revelar();
-                }
-            }
-        } else if(x == 0 && y == this.numCasillas - 1){//Si pica esquina superior derecha.
-            if(!this.tablero[x][y].revelado){    
-                if(this.tablero[x][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x,y-1);
-                    this.tablero[x][y-1].revelar();
-                }
-                if(this.tablero[x+1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y-1);
-                    this.tablero[x+1][y-1].revelar();
-                }
-                if(this.tablero[x+1][y].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y);
-                    this.tablero[x+1][y].revelar();
-                }
-            }
-        } else if(x == this.numCasillas - 1 && y == this.numCasillas - 1){//Si pica esquina inferior derecha.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y-1);
-                    this.tablero[x-1][y-1].revelar();
-                }
-                if(this.tablero[x-1][y].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y);
-                    this.tablero[x-1][y].revelar();
-                }
-                if(this.tablero[x][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x,y-1);
-                    this.tablero[x][y-1].revelar();
-                }
-            }
-        } else if(x >= 1 && x <= this.numCasillas - 2 & y == 0){//Si pica borde izq.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x-1][y].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y);
-                    this.tablero[x-1][y].revelar();
-                }
-                if(this.tablero[x-1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y+1);
-                    this.tablero[x-1][y+1].revelar();
-                }
-                if(this.tablero[x][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x,y+1);
-                    this.tablero[x][y+1].revelar();
-                }
-                if(this.tablero[x+1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y+1);
-                    this.tablero[x+1][y+1].revelar();
-                }
-                if(this.tablero[x+1][y].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y);
-                    this.tablero[x+1][y].revelar();
-                }
-            }
-        } else if(x == this.numCasillas - 1 && y >= 1 & y <= this.numCasillas - 2){//Si pica borde inferior.
-            if(!this.tablero[x][y].revelado){ //Para que no sume más bombas cercanas cada vez que se detecta el evento, solo se suma cuando las bombas no han sido reveladas.
-                if(this.tablero[x][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x,y-1);
-                    this.tablero[x][y-1].revelar();
-                }
-                if(this.tablero[x-1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y-1);
-                    this.tablero[x-1][y-1].revelar();
-                }
-                if(this.tablero[x-1][y].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y);
-                    this.tablero[x-1][y].revelar();
-                }
-                if(this.tablero[x-1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y+1);
-                    this.tablero[x-1][y+1].revelar();
-                }
-                if(this.tablero[x][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x,y+1);
-                    this.tablero[x][y+1].revelar();
-                }
-            }    
-        } else if(x >= 1 && x <= this.numCasillas - 2 & y == this.numCasillas - 1){//Si pica borde der.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x+1][y].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y);
-                    this.tablero[x+1][y].revelar();
-                }
-                if(this.tablero[x+1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y-1);
-                    this.tablero[x+1][y-1].revelar();
-                }
-                if(this.tablero[x][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x,y-1);
-                    this.tablero[x][y-1].revelar();
-                }
-                if(this.tablero[x-1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y-1);
-                    this.tablero[x-1][y-1].revelar();
-                }
-                if(this.tablero[x-1][y].tile.id != "bomba"){
-                    this.getNearBombs(x-1,y);
-                    this.tablero[x-1][y].revelar();
-                }
-            }
-        } else if(x == 0 && y >= 1 & y <= this.numCasillas - 2){//Si pica borde superior.
-            if(!this.tablero[x][y].revelado){
-                if(this.tablero[x][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x,y-1);
-                    this.tablero[x][y-1].revelar();
-                }
-                if(this.tablero[x][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x,y+1);
-                    this.tablero[x][y+1].revelar();
-                }
-                if(this.tablero[x+1][y+1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y+1);
-                    this.tablero[x+1][y+1].revelar();
-                }
-                if(this.tablero[x+1][y].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y);
-                    this.tablero[x+1][y].revelar();
-                }
-                if(this.tablero[x+1][y-1].tile.id != "bomba"){
-                    this.getNearBombs(x+1,y-1);
-                    this.tablero[x+1][y-1].revelar();
+        const alrededor = [
+            [x-1, y-1], [x-1, y], [x-1, y+1],
+            [x  , y-1],           [x  , y+1],
+            [x+1, y-1], [x+1, y], [x+1, y+1]
+        ];
+        for(let [nx, ny] of alrededor){
+            if(nx >= 0 && ny >= 0 && nx < this.numCasillas && ny < this.numCasillas){
+                if(!this.tablero[nx][ny].revelado && this.tablero[nx][ny].tile.id != "bomba"){
+                    this.getNearBombs(nx, ny);
+                    this.tablero[nx][ny].revelar();
+                    if(this.tablero[nx][ny].nearBombs == 0){
+                        this.getSurroundings(nx, ny); //Woooow esperaba que solo se hiciera la recursión de la esquina superior derecha, pero se revelan todaass las necesarias, gracias a Dios que sorpresa wue haya sido lo justo para revelar lo que queríamos que se revelara.
+                        console.log("Recursión");
+                    }
                 }
             }
         }
@@ -413,14 +107,15 @@ export class Tablero{
 
     verifyPos(primerClick){
         this.tableroPadre.addEventListener("click", (evento)=>{
-            if(evento.target.id == "contenedorTablero"){//Para que no trate de agarrar el datasety y datasetx que no existe en el padre.
-                return;
-            }
+            let i = 0;
+            if(evento.target.id == "contenedorTablero") return; //Para que no trate de agarrar el datasety y datasetx que no existe en el padre.
+            if(evento.target.disabled) return;
             this.x = parseInt(evento.target.dataset.x);
             this.y = parseInt(evento.target.dataset.y);
             this.getNearBombs(this.x,this.y);
             if(primerClick == false){
                 this.getSurroundings(this.x,this.y);
+                console.log("Fue el primer click");
             }
             //Mientras sea el primer click (primerClick=false) y sea una bomba o tanga bombas alrededor, si es bomba o tiene bombas alrededor se regenera el tablero
             while(this.tablero[this.x][this.y].tile.id == "bomba" && primerClick == false || this.tablero[this.x][this.y].nearBombs != 0 && primerClick == false){
@@ -432,9 +127,10 @@ export class Tablero{
                 this.getSurroundings(this.x,this.y);
                 //Siguiente paso 30 de junio de 2025 hacer recursivo que cheque donde no hay bombas contiguas y las revele. Puede ser que cheque abajo luego de lado derecho para arriba o puede verificar radialmente a la casilla seleccionada y que esas luego vuelvan a preguntar radialmente.
             }
-            if(evento.target.classList == "boton"){
+            if(evento.target.classList.contains("boton")){
                 primerClick = true;
                 this.tablero[this.x][this.y].revelar();
+                evento.target.disabled = true;
             }
         });
     }
