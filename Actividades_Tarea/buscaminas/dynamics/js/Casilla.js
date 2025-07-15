@@ -39,5 +39,6 @@ export class Casilla{
         if(this.nearBombs >= 4){
             this.tile.style.color = "#871A0E";
         }
+        this.tile.style.pointerEvents = "none";
     }
 }
