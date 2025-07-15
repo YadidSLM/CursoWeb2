@@ -16,8 +16,12 @@
     <?php
         $nivel = (isset($_POST["nivel"]) && $_POST["nivel"] != "") ? $_POST["nivel"]: false;
         //La cookie guarda el nivel que metió el usuario por sesión (Hasta que se cierre el navegador). Con "/" esa variable(cookie) con nombre nivel está disponible en todas las carpetas dentro de buscaminas
+        if(!isset($_COOKIE["nivel"]) || $_COOKIE["nivel"] == ""){
+            header("location: ../../index.html");
+        }
         setcookie("nivel", $nivel, "/");
     ?>
+
     <div id="contenedorTablero">
         
     </div>
