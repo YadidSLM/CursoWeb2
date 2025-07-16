@@ -12,6 +12,7 @@ export class Partida{
         this.tablero.generarTablero();
         this.tablero.verifyPos(this.primerClick);
     }
+    
     endGame(){}
     volverInicio(){}
     verPuntaje(p){

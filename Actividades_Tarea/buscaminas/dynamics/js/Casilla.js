@@ -5,7 +5,7 @@ export class Casilla{
         this.revelado = false;
         this.bandera = false;
         this.posXY = posXY;
-        this.tabM = []; //Cada casilla tiene como atributo su tablero donde está constenido.
+        this.tabM = []; //Cada casilla tiene como atributo su tablero donde está contenido.
         // this.estado=[
         //     [true, "bomba", this.nearBombs, "libre"],
         //     [false, "bandera"]
@@ -20,6 +20,17 @@ export class Casilla{
         // this.tile.addEventListener("click", (evt)=>{
         //     this.revelar(evt);
         // });
+    }
+    flaged(){
+        this.bandera = true;
+        this.tile.style.backgroundImage = "url(../../statics/imgs/red_flag.png)";
+        this.tile.style.backgroundSize = "60%";
+        this.tile.style.backgroundPosition = "center";
+        this.tile.style.backgroundRepeat = "no-repeat";
+    }
+    unflag(){
+        this.bandera = false;
+        this.tile.style.backgroundImage = "none";
     }
     revelar(){
         this.revelado = true;
