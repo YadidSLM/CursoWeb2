@@ -54,7 +54,7 @@ h2{
 }
 
 .boton, a{
-    border-radius: 20px;
+    border-radius: 5%;
     border-style: hidden;
     background-color:#F5E733; /*#F5E733*/
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
