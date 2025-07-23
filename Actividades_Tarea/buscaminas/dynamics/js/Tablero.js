@@ -11,31 +11,38 @@ function delay(miliSeg){
 
 export class Tablero{
     //Constructores
-    constructor(nivel){
+    constructor(nivel, primerClick){
         //Atributos
         this.nivel = nivel;
+        this.primerClick = primerClick;
         //this.bombPos = []; //Se usa posiciones en generarTablero como lista de cadenas, bombPos es de números que aún no se ocupa.
         this.tablero = [];
         this.fila = [];
         this.tableroPadre = document.getElementById("contenedorTablero");
+        this.crono = document.getElementById("duracion");
+        this.guardarP = document.getElementById("guardar_puntaje");
+        this.puntajes = document.getElementById("puntajes");
+        this.body_partida = document.getElementById("body_partida");
+        this.divAll = document.getElementById("all");
+        this.duracion = "";
         this.endGame = false;
         this.posicionesB = [];
         this.x = 0;
         this.y = 0;
         if(this.nivel == "facil"){
             this.numCasillas = 8;
-            this.bombas = 10;
+            this.bombas = 10; //10
             this.tableroPadre.setAttribute("style", "grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr);")
         }
         if(this.nivel == "medio"){
             this.numCasillas = 16;
-            this.bombas = 40;
+            this.bombas = 40; //40
             this.tableroPadre.setAttribute("style", "grid-template-columns: repeat(16, 1fr); grid-template-rows: repeat(16, 1fr);")
 
         }
         if(this.nivel == "dificil"){
             this.numCasillas = 24;
-            this.bombas = 99;
+            this.bombas = 99; //99
             this.tableroPadre.setAttribute("style", "grid-template-columns: repeat(24, 1fr); grid-template-rows: repeat(24, 1fr);")
         }       
     }
@@ -133,6 +140,8 @@ export class Tablero{
     }
 
     async revBombs(posiciones, gano){
+        const fondoWin = document.createElement("div");
+        const fondoLose = document.createElement("div");
         for(let col = 0; col < this.numCasillas; col++){
             for(let row = 0; row < (this.numCasillas); row++){
                 if(posiciones.includes(`${col},${row}`)){
@@ -142,7 +151,33 @@ export class Tablero{
         }
         await delay(600);
         if(gano == false){
-            alert("Has perdido");
+            fondoLose.style.backgroundColor = "#0000002c";
+            fondoLose.style.backgroundImage = "url(../../statics/imgs/game_over.png)";
+            fondoLose.style.backgroundPosition = "center";
+            fondoLose.style.backgroundRepeat = "no-repeat";
+            fondoLose.style.position = "absolute";
+            fondoLose.style.width = "inherit";
+            fondoLose.style.height = "inherit";
+            fondoLose.style.zIndex = "5";
+            for(let a = 1; a <= 100; a++){
+                fondoLose.style.backgroundSize = `${a}%`;
+                this.tableroPadre.appendChild(fondoLose);
+                await delay(10);
+            }
+        } else {
+            fondoWin.style.backgroundColor = "#0000002c";
+            fondoWin.style.backgroundImage = "url(../../statics/imgs/backGWin.png)";
+            fondoWin.style.backgroundPosition = "center";
+            fondoWin.style.backgroundRepeat = "no-repeat";
+            fondoWin.style.position = "absolute";
+            fondoWin.style.width = "inherit";
+            fondoWin.style.height = "inherit";
+            fondoWin.style.zIndex = "5";
+            for(let a = 1; a <= 100; a++){
+                fondoWin.style.backgroundSize = `${a}%`;
+                this.tableroPadre.appendChild(fondoWin);
+                await delay(10);
+            }
         }
     }
 
@@ -155,15 +190,39 @@ export class Tablero{
                 }
             }
         }
-        if((rev + this.bombas) == (this.numCasillas * this.numCasillas)){
+        if((rev + this.bombas) == (this.numCasillas * this.numCasillas)){ //Si los revelados + las bombas es igual al número total de casillas, gana.
             this.revBombs(this.posicionesB, true);
+            this.guardarP.style.display = "flex";
             return true;
         } else{
             return false;
         }
     }
 
-    verifyPos(primerClick){
+    async runCrono(){
+        let seg = 0;
+        let min = 0;
+        let hr = 0;
+        console.log("Inicio crono");
+        while(this.tablero && !this.endGame && this.primerClick == true && this.endGame == false){ //Cuando se acabe el juegp termina.
+            seg++;
+            console.log(seg);
+            this.crono.innerHTML = `${hr} : ${min} : ${seg}`;
+            if(seg == 59){
+                seg = 0;
+                min++;
+            }
+            if(min == 59){
+                min = 0;
+                hr++;
+            }
+            this.duracion = `${hr}:${min}:${seg}`;
+            await delay(1000);// Aquí porque sino cuando pierde al final aumenta en uno.
+        }
+        console.log("Fin crono");
+    }
+
+    verifyPos(){
         this.tableroPadre.addEventListener("mousedown", (evento)=>{
             if(this.endGame == true) return;
             if(evento.target.id == "contenedorTablero") return; //Para que no trate de agarrar el datasety y datasetx que no existe en el padre.
@@ -172,9 +231,11 @@ export class Tablero{
             this.y = parseInt(evento.target.dataset.y);
             this.getNearBombs(this.x,this.y);
             //En el primer click
-            if(!primerClick && evento.button == 0 && !this.tablero[this.x][this.y].bandera){
-                this.alPrimerClick(this.x, this.y, primerClick);
-                primerClick = true;
+            if(!this.primerClick && evento.button == 0 && !this.tablero[this.x][this.y].bandera){
+                this.alPrimerClick(this.x, this.y, this.primerClick);
+                this.primerClick = true;
+                this.puntajes.style.display = "none";
+                this.runCrono();
             } else if(evento.button == 2){
                 if(!this.tablero[this.x][this.y].bandera){
                     this.tablero[this.x][this.y].flaged();
@@ -182,7 +243,7 @@ export class Tablero{
                     this.tablero[this.x][this.y].unflag();
                 }
             //Después del primer click
-            } else if(primerClick && evento.target.classList.contains("boton") && evento.button == 0 && !this.tablero[this.x][this.y].bandera){ //Si es botón, dió click izquierdo y no tiene bandera.
+            } else if(this.primerClick && evento.target.classList.contains("boton") && evento.button == 0 && !this.tablero[this.x][this.y].bandera){ //Si es botón, dió click izquierdo y no tiene bandera.
                 this.tablero[this.x][this.y].revelar();
                 evento.target.disabled = true;
                 if(this.tablero[this.x][this.y].nearBombs == 0){ //Si pica en alguna que no tenga bombas cercanas que se revelen todas las contiguas que no tengan bombas, así pasa en el juego en línea.
@@ -194,16 +255,13 @@ export class Tablero{
                     this.revBombs(this.posicionesB, false);
                 }
             }
+            
             if(this.gana()){
                 this.endGame = true;
                 this.tableroPadre.style.pointerEvents = "none";
-                alert("Has ganado");
                 return;
             }
-            // if(this.numCasRev + this.bombas == this.numCasillas){
-            //     console.log("Ha ganado");
-            // }
-            //Si el total de casillas es igual a las casillas reveladas + numero de bombas gana.
+
         });
     }
 }

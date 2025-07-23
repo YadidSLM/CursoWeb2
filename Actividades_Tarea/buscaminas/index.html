@@ -7,12 +7,13 @@
     <link rel="shortcut icon" href="./statics/imgs/banana.png" type="image/x-icon">
     <title>Busca</title>
 </head>
-<body>
+<body id="body_index">
     <h1 class="titulo">Busca Bananas</h1>
     <form action="./dynamics/php/partida.php" method="post">
         <button type="submit" name="nivel" class="boton" value="facil" id="facil">Fácil</button>
         <button type="submit" name="nivel" class="boton" value="medio" id="medio">Medio</button>
         <button type="submit" name="nivel" class="boton" value="dificil" id="dificil">Difícil</button>
+        <a id='puntajes' href='./dynamics/php/ver_puntajes.php'>Ver Puntajes</a>
     </form>
 </body>
 </html>

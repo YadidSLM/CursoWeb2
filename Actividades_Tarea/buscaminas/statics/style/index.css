@@ -7,27 +7,45 @@ html, body{
     margin: 0;
     padding: 0;
     height: 100%;
-    position: relative;
+    /* position: relative; */
     background-image: url("../imgs/jungle.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
+    background-repeat: repeat;
+    /* overflow: hidden; */
 }
+
+#body_partida{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#body_index{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .titulo{
     /* Font */
     font-family: "Titles", "Courier New", monospace;
     /* Clamp limita el tamaño, 1rem evita que sea demasiado pequeño (valor mínimo), 5vw es el proporcional, 8rem es el máximo, evita que sea demasiado grande en pantallas grandes */
-    font-size: clamp(1rem, 8vw, 8rem);
+    font-size: clamp(5rem, 8vw, 8rem);
     text-shadow: 5px 5px 2px black;
     color: gold;
     /* Elemeto: posición, margen ypadding*/
     margin: 0;
     padding: 0;
-    display: inline;
-    position: absolute;
-    left: 20vw;
-    top: 10vh;
+    /* display: inline; */
+    
+}
+
+#titulo_partida{
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 2vh;
 }
 
 h2{
@@ -41,16 +59,17 @@ h2{
     padding: 0;
 }
 
+#all{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto 1fr;
+    
+}
+
 #titulo_partida{
 /* Cuando tiene la clase titulo le hace caso a estas dimensiones*/
     left: 40vw !important;
     top: 5vh !important;
-}
-
-#nivel{
-    position: relative;
-    top: 16vh;
-    left: 3vw;
 }
 
 .boton, a{
@@ -65,6 +84,20 @@ h2{
     align-items: center;
     justify-content: center;
     text-align: center;
+    z-index: 3;
+}
+
+span{
+    font-family:'Times New Roman', Times, serif;
+    color: white;
+    font-size: larger;
+    text-align: center;
+    padding: 1vw;
+    margin: 1vw;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #facil, #medio, #dificil{
@@ -79,35 +112,49 @@ a{
     padding: 1vw;
     margin: 1vw;
     font-size: clamp(1cqb, 3cqb, 2rem);
-    position: relative;
+    position: static;
     
 }
 
 .menu {
-  position: absolute;    /* Para ubicarlo en una esquina */
-  top: 30vh;
-  left: 1vw;
+  /*position: static;    /* Para ubicarlo en una estatic/
+  width: 18vw;
   display: flex;
   flex-direction: column; /* Apila verticalmente */
   gap: 2vh;               /* Espacio entre botones */
 }
 
+#guardar_puntaje{
+    z-index: 4;
+    display: none;
+}
+
+
+
+#gameBtns{
+    /* top: 30vh;
+    left: 1vw; */
+}
+
+#punt_menu{
+    /* top: 30vh;
+    right: 1vw; */
+}
+
 form{
     padding: 0;
-    margin: 0;
-    position: relative;
-    top: 35vh;
-    left: 38vw;
+    margin-top: 5%;
+    position: static;
 }
 
 #contenedorTablero{
-    position: relative;
-    left: 34vw;
-    top: 20vh;
+    position: static;
+    /* left: 34vw;
+    top: 20vh; */
     display: grid;
     gap: 2px; /* espacio entre casillas */
-    width: 450px;
-    height: 450px;
+    width: min(90vw, 40vw); /*450px*/
+    height: min(90vw, 40vw); /*450px*/
 }
 
 .casilla {
@@ -120,4 +167,53 @@ form{
     box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5);
     color: #346215;
     cursor: pointer;
+}
+
+#guardar{
+    background-color:rgb(235, 199, 0);
+    border-radius: 5px;
+    padding: 5%;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #24440E;
+    text-align: center;
+}
+
+.nivel_puntajes{
+    margin: 10%;
+    padding: 5%;
+    background-color:rgb(235, 199, 0);
+    border-radius: 5px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #24440E;
+    text-align: center;
+}
+
+#puntajes{
+    background-color: rgb(238, 202, 0);
+}
+
+@media (max-aspect-ratio: 1/1) {
+    #all{
+        display: grid;
+        grid-template-columns: 1fr;        /* Solo una columna */
+        grid-template-rows: auto auto auto; /* 3 filas: Menú - Tablero - Menú */
+        justify-items: center;             /* Centra horizontalmente los hijos */
+        gap: 2vh;
+    }
+
+    .menu{
+        display: flex;
+        flex-flow: row;
+    }
+
+    #contenedorTablero{
+        position: static;
+        /* left: 34vw;
+        top: 20vh; */
+        display: grid;
+        gap: 2px; /* espacio entre casillas */
+        width: 50vh; /*450px*/
+        height: 50vh; /*450px*/
+    }
+  
 }

@@ -17,10 +17,40 @@ function obtenerCookie(wantedCookie){
 }
 
 const puntajes = document.getElementById("puntajes");
+const jugarOtraVez = document.getElementById("play_again");
+const guardarPuntaje = document.getElementById("guardar_puntaje");
 
-const primera = new Partida(obtenerCookie("nivel"));
+
+let primera = new Partida(obtenerCookie("nivel"));
 primera.startGame();
+jugarOtraVez.addEventListener("click", ()=>{
+    primera.endGame();
+    primera = new Partida(obtenerCookie('nivel'));
+    primera.startGame();
+    primera.tablero.crono.innerHTML = "0 : 0 : 0";
+    guardarPuntaje.style.display = "none";
+    puntajes.style.display = "flex";
+});
 
 puntajes.addEventListener("click", ()=>{
-    primera.verPuntaje(puntajes);
+    if(primera && !primera.tablero.primerClick){ //Si existe la partida y no ha dado el primer click que redireccione
+        window.location = "../php/ver_puntajes.php";
+    }
+});
+
+guardarPuntaje.addEventListener("click", ()=>{
+    console.log(primera.tablero.duracion);
+    //Redirección a guardar_partida.php generando un form escondido que mande por post la duracion para que nadie pueda ingresar la duración por la url si fuera por get con fetch.
+    const hiddenForm = document.createElement("form");
+    hiddenForm.method = "POST";
+    hiddenForm.action = "../php/guardar_puntajes.php";
+
+    const inDuracion = document.createElement("input");
+    inDuracion.type = "hidden";
+    inDuracion.name = "duration";
+    inDuracion.value = primera.tablero.duracion;
+
+    hiddenForm.appendChild(inDuracion);
+    document.body.appendChild(hiddenForm);
+    hiddenForm.submit();
 });

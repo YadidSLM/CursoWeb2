@@ -1,22 +1,27 @@
 import { Tablero } from "./Tablero.js";
 
+function delay(miliSeg){
+    return new Promise(resolve => setTimeout(resolve, miliSeg));
+}
+
 export class Partida{
     //Constructores
     constructor(nivel){
         //Atributos
-        this.tablero = new Tablero(nivel);
         this.primerClick = false;
+        this.tablero = new Tablero(nivel, this.primerClick);
+        this.crono = document.getElementById("duracion");
     }
     //Métodos
     startGame(){
         this.tablero.generarTablero();
-        this.tablero.verifyPos(this.primerClick);
+        this.tablero.verifyPos();
+        console.log(this.tablero.endGame);
     }
     
-    endGame(){}
-    volverInicio(){}
-    verPuntaje(p){
-        console.log("A ver puntajes");
-        p.innerText = "A ver";
+    endGame(){
+        this.tablero.endGame = true;
+        this.tablero.tableroPadre.innerHTML = "";
+        this.tablero = null;
     }
 }
